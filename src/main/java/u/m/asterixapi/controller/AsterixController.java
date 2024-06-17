@@ -3,7 +3,6 @@ package u.m.asterixapi.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import u.m.asterixapi.models.Character;
-import u.m.asterixapi.models.CharacterRepo;
 import u.m.asterixapi.services.CharacterService;
 
 import java.util.List;

@@ -1,10 +1,9 @@
 package u.m.asterixapi.services;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import u.m.asterixapi.models.Character;
-import u.m.asterixapi.models.CharacterRepo;
+import u.m.asterixapi.repository.CharacterRepo;
 
 import java.util.List;
 import java.util.UUID;
