@@ -3,7 +3,7 @@ package u.m.asterixapi.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import u.m.asterixapi.models.Character;
-import u.m.asterixapi.models.CharacterRepo;
+import u.m.asterixapi.models.CharacterWithoutId;
 import u.m.asterixapi.services.CharacterService;
 
 import java.util.List;
@@ -20,8 +20,24 @@ public class AsterixController {
         return characterService.getAllCharacters();
     }
 
-    @PostMapping
-    public Character createCharacter(@RequestBody Character newCharacter) {
+    @GetMapping("/{id}")
+    public Character getCharacterById(@PathVariable String id) {
+        return characterService.getCharacterById(id);
+    }
+
+    @PostMapping()
+    public Character createCharacter(@RequestBody CharacterWithoutId newCharacter) {
         return characterService.createCharacter(newCharacter);
     }
+
+    @PutMapping
+    public void updateCharacter(@RequestParam String id, @RequestBody CharacterWithoutId updatedCharacter) {
+        characterService.updateCharacter(id, updatedCharacter);
+    }
+
+    @DeleteMapping
+    public void deleteCharacter(@RequestParam String id) {
+        characterService.deleteCharacter(id);
+    }
+
 }
