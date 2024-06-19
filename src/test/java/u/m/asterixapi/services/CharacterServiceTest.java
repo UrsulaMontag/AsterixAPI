@@ -20,7 +20,7 @@ class CharacterServiceTest {
 
     //Dependencies (will be mocked)
     private static CharacterRepo mockCharacterRepo;
-    private static Utilservice mockUtilService;
+    private static UtilService mockUtilService;
 
     //Test data
     private static List<Character> testCharacters;
@@ -29,8 +29,8 @@ class CharacterServiceTest {
     @BeforeAll
     static void setUpCharacters() {
         mockCharacterRepo = mock(CharacterRepo.class);
-        mockUtilService = mock(Utilservice.class);
-        characterService = new CharacterService(mockCharacterRepo);
+        mockUtilService = mock(UtilService.class);
+        characterService = new CharacterService(mockCharacterRepo, mockUtilService);
         testCharacters = new ArrayList<>() {{
             add(new Character("1", "Asterix", 35, "Krieger"));
             add(new Character("2", "Obelix", 35, "Lieferant"));

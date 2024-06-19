@@ -2,19 +2,18 @@ package u.m.asterixapi.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import u.m.asterixapi.models.ChangeModels;
 import u.m.asterixapi.models.Character;
 import u.m.asterixapi.models.CharacterWithoutId;
 import u.m.asterixapi.repository.CharacterRepo;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class CharacterService {
 
     private final CharacterRepo characters;
+    private final UtilService utilService;
 
     public List<Character> getAllCharacters() {
         return characters.findAll();
@@ -26,7 +25,7 @@ public class CharacterService {
     }
 
     public Character createCharacter(CharacterWithoutId character) {
-        Character characterToCreate = ChangeModels.characterWithoutIdToCharacter(character);
+        Character characterToCreate = new Character(utilService.generateId(), character.name(), character.age(), character.occupation());
         return characters.save(characterToCreate);
     }
 
